@@ -11,7 +11,6 @@ print("Текущие пользователи в базе данных:")
 for row in rows:
     print(row)
 
-
 # Добавляем нового пользователя
 test_user = ("Виталий", "vit@example.com", 51, "Беларусь")
 cursor.execute("INSERT INTO users (name, email, age, country) VALUES (?, ?, ?, ?)", test_user)
@@ -23,8 +22,9 @@ test_user_id = cursor.lastrowid
 # Проверяем, что пользователь добавлен
 cursor.execute("SELECT * FROM users WHERE id = ?", (test_user_id,))
 user = cursor.fetchone()
-assert user, "Ошибка: Пользователь не добавлен!"
-print("Тестовый пользователь:", user)
+expected_user = (test_user_id,) + test_user
+assert user == expected_user, f"Ошибка: данные в БД не совпадают! Ожидалось {expected_user}, получено {user}"
+print("Данные добавлены корректно:", user)
 
 # Удаляем пользователя после теста
 cursor.execute("DELETE FROM users WHERE id = ?", (test_user_id,))
