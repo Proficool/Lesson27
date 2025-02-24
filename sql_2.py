@@ -7,7 +7,7 @@ cursor = conn.cursor()
 # Вывод всех пользователей
 cursor.execute("SELECT * FROM users")
 rows = cursor.fetchall()
-print("Текущие пользователи в БД:")
+print("Текущие пользователи в базе данных:")
 for row in rows:
     print(row)
 
