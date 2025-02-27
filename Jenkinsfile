@@ -4,7 +4,7 @@ pipeline {
     environment {
         CONTAINER_NAME = 'python-tests-container-VitaliyP'
         ALLURE_RESULTS_DIR = 'target/allure-results'
-        JOB_NAME = 'DZ28 VitP'
+        JOB_NAME = 'VitP28'
     }
 
     stages {
