@@ -43,12 +43,13 @@ pipeline {
             }
         }
 
-        stage('Run Flake8 Linting') {
+        
+        stage('RunTestsDB') {
             steps {
                 sh '''
-                echo "Запускаем линтер..."
+                echo "Запускаем тесты..."
                 mkdir -p $ALLURE_RESULTS_DIR
-                docker exec $CONTAINER_NAME pytest --flake8 . --alluredir=$ALLURE_RESULTS_DIR
+                docker exec $CONTAINER_NAME pytest . --alluredir=$ALLURE_RESULTS_DIR
                 '''
             }
         }
